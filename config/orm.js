@@ -1,3 +1,4 @@
+const { query } = require("./connection");
 const connection = require("./connection");
 const orm = {
   selectAll: (tableName, cb) => {
@@ -22,5 +23,16 @@ const orm = {
     });
   },
 
-  
+  updateOne: (colValue, id, cb) => {
+    const queryString = `UPDATE burgers SET devoured='1' WHERE ${colValue} = ${id}`;
+    connection.query(queryString, [id], (err, res) => {
+      if (err) {
+        throw err;
+      } else {
+        cb(res);
+      }
+    });
+  },
 };
+
+module.exports = orm
