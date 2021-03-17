@@ -12,3 +12,10 @@ router.get("/", (req, res) => {
   });
 });
 
+//inserting data and then returning to the home page
+router.post('/insertOne', (req, res) => {
+    burger.insert(req.body.burger_name, bData => {
+        res.redirect('/')
+    })
+})
+
