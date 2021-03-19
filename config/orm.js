@@ -24,7 +24,7 @@ const orm = {
   },
 
   updateOne: (colValue, id, cb) => {
-    const queryString = `UPDATE burgers SET devoured='1' WHERE ${colValue} = ${id}`;
+    const queryString = `UPDATE burgers SET devoured='1' WHERE ${colValue}=${id}`;
     connection.query(queryString, [id], (err, res) => {
       if (err) {
         throw err;

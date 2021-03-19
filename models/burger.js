@@ -7,13 +7,13 @@ const burger = {
         })
     },
 
-    insert: cb => {
+    insert: (addOn, cb) => {
         orm.insertOne('burgers', 'burger_name', addOn, res =>{
             cb(res)
         })
     },
 
-    update: cb =>{
+    update: (colValue, id, cb) =>{
         orm.updateOne(colValue, id, res => {
             cb(res)
         })

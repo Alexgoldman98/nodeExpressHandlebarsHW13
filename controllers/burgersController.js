@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 
 //inserting data and then returning to the home page
 router.post("/insertOne", (req, res) => {
-  burger.insert(req.body.burger_name, (bData) => {
+  burger.insert(req.body.burger_name, () => {
     res.redirect("/");
   });
 });
@@ -22,7 +22,7 @@ router.post("/insertOne", (req, res) => {
 router.put("/burgers/:id", (req, res) => {
   const colValue = "id";
   const varId = req.params.id;
-  burger.update(colValue, varId, (bData) => {
+  burger.update(colValue, varId, () => {
     res.redirect("/");
   });
 });
