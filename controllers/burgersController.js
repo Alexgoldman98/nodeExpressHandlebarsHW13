@@ -5,7 +5,7 @@ const burger = require("../models/burger");
 router.get("/", (req, res) => {
   burger.all((data) => {
     const bData = {
-        //this is what goes to handlebars
+      //this is what goes to handlebars
       burgers: data,
     };
     res.render("index", bData);
@@ -13,9 +13,18 @@ router.get("/", (req, res) => {
 });
 
 //inserting data and then returning to the home page
-router.post('/insertOne', (req, res) => {
-    burger.insert(req.body.burger_name, bData => {
-        res.redirect('/')
-    })
-})
+router.post("/insertOne", (req, res) => {
+  burger.insert(req.body.burger_name, (bData) => {
+    res.redirect("/");
+  });
+});
 
+router.put("/burgers/:id", (req, res) => {
+  const colValue = "id";
+  const varId = req.params.id;
+  burger.update(colValue, varId, (bData) => {
+    res.redirect("/");
+  });
+});
+
+module.exports = router;
