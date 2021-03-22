@@ -19,7 +19,7 @@ router.post("/insertOne", (req, res) => {
   });
 });
 
-router.put("/burgers/:id", (req, res) => {
+router.put("/updateOne/:id", (req, res) => {
   const colValue = "id";
   const varId = req.params.id;
   burger.update(colValue, varId, () => {

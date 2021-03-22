@@ -8,14 +8,13 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bg-light text-black">
-                Can I take your burger order, please?
             </div>
 
         <!-- form -->
             <div class="card-body">
                 <form class="create-update-form" action="/insertOne" method="POST">
                     <div class="form-group">
-                        <label for="burger">Place your order here:</label>
+                        <label for="burger">Place order:</label>
                         <input id="toGoBurger" name="burger_name" type="text" class="form-control" placeholder="Write order here">
                     </div>
                     <button class="btn btn-alert" type="submit">Place order</button>
@@ -36,10 +35,10 @@
                 {{#each burgers}}
                 {{#unless this.devoured}}
                 <p>{{this.burger_name}}</p>
-                <form action="/updateOne/{{this.id}}" method="POST">
+                <form action="/updateOne/{{this.id}}" method="PUT">
                 <input type="hidden" name="id" value="{{this.id}}">
                 <input type="hidden" name="devoured" value='1'>
-                <button class="btn btn-outline-success" type="submit">Eat dat!<i class="fas fa-utensils"></i></button>
+                <button class="btn btn-outline-success" type="submit">eat this burger!<i class="fas fa-utensils"></i></button>
                 </form>
                 <br>
                 {{/unless}}
