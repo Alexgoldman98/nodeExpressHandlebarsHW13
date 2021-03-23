@@ -8,13 +8,15 @@ const burger = {
     },
 
     insert: (addOn, cb) => {
+        console.log('hello')
         orm.insertOne('burgers', 'burger_name', addOn, res =>{
             cb(res)
         })
     },
 
-    update: (colValue, id, cb) =>{
-        orm.updateOne(colValue, id, res => {
+    update: (objColVals, colValue, id, cb) =>{
+        console.log('hello')
+        orm.updateOne(objColVals, colValue, id, res => {
             cb(res)
         })
     }
