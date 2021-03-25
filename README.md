@@ -1,5 +1,4 @@
-# employeeManagementHW12
-
+# Burger Eater
 ## Table of Contents: 
 [Project Description](#Project-Description)  
 [Usage Information](#Usage-Information)   
