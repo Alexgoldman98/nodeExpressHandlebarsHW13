@@ -10,7 +10,7 @@ const objToSql = (ob) => {
     // Check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
       // If string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-      if (typeof value === 'string' && value.indexOf(' ') >= 0) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = `'${value}'`;
       }
       // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
@@ -46,16 +46,13 @@ const orm = {
     });
   },
 
-  updateOne: (objColVals, colValue, id, cb) => {
-    console.log('hello')
-    const queryString = `UPDATE burgers SET ${objToSql(objColVals)} WHERE ${colValue}`;
-    console.log(queryString);
-    connection.query(queryString, (err, res) => {
+  updateOne: function (colVal, id, cb) {
+    var queryString = `UPDATE burgers SET devoured='1' WHERE ${colVal}=${id}`;
+    connection.query(queryString, [id], function (err, result) {
       if (err) {
         throw err;
-      } else {
-        cb(res);
       }
+      cb(result);
     });
   },
 };

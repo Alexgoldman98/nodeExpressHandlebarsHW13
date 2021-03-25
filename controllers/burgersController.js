@@ -19,19 +19,13 @@ router.post("/insertOne", (req, res) => {
   });
 });
 
-router.put("/updateOne/:id", (req, res) => {
-  console.log('hello')
-  const colValue = `id = ${req.params.id}`;
-  
-  burger.update({
-    devoured: 1,
-}, colValue, (result) => {
-    if (result.changedRows === 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    }
-    res.status(200).end();
+router.post("/updateOne/:id", function (req, res) {
+  var colVal = "id";
+  var id = req.params.id;
+  burger.update(colVal, id, function () {
+    res.redirect("/");
   });
 });
+
 
 module.exports = router;

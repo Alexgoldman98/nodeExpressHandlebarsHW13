@@ -1,79 +1,94 @@
 <div class="container">
-    <div class="jumbotron text-center bg-light text-black"><h1>BURGER</h1></div>
-    <!-- change --> 
-    <h1 class="display-4 text-center"><img id= "baby-burger" src="/images/burger-outline-filled.png" class="img-fluid" alt="Responsive image"></h1>
+  <div class="jumbotron text-center bg-light text-black">
+    <h1>
+      BURGER EATER
+    </h1>
+  </div>
 </div>
-
 <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header bg-light text-black">
-            </div>
-
-        <!-- form -->
-            <div class="card-body">
-                <form class="create-update-form" action="/insertOne" method="POST">
-                    <div class="form-group">
-                        <label for="burger">Place order:</label>
-                        <input id="toGoBurger" name="burger_name" type="text" class="form-control" placeholder="Write order here">
-                    </div>
-                    <button class="btn btn-alert" type="submit">Place order</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mt-4">
-    <div class="col-md-6 mt-4">
-        <div class="card border border-secondary">
-            <div class="card-header bg-light text-black">
-                Burgers
-            </div>
-            {{!-- Card to hold burger entries --}}
-            <div class="card-body">
-                {{#each burgers}}
-                {{#unless this.devoured}}
-                <p>{{this.burger_name}}</p>
-                <form action="/updateOne/{{this.id}}" method="PUT">
-                <input type="hidden" name="id" value="{{this.id}}">
-                <input type="hidden" name="devoured" value='1'>
-                <button class="btn btn-outline-success" type="submit">eat this burger!<i class="fas fa-utensils"></i></button>
-                </form>
-                <br>
-                {{/unless}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mt-4">
-        <div class="card border border-secondary devoured-card">
-            <div class="card-header bg-secondary text-white" id="devoured-card-header">Devoured Burgers</div>
-            <!-- Card for the devoured burgers -->
-            <div class="card-body">
-                {{#each burgers}}
-                {{#if this.devoured}}
-                <div class="devourBurger">
-                    <p>
-                        {{this.burger_name}}
-                    </p>
-                </div>
-                {{/if}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- footer -->
-<div class="row mt-5">
-    <div class="col-md-12">
-      <div class="card footer">
-        <div class="card-body footer-body text-white">
-          <br>
-          <br>
-          <small></small>
-        </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-light text-black"></div>
+      <!-- form -->
+      <div class="card-body">
+        <form class="create-update-form" action="/insertOne" method="POST">
+          <div class="form-group">
+            <label for="burger">
+              Place order:
+            </label>
+            <input
+              id="toGoBurger"
+              name="burger_name"
+              type="text"
+              class="form-control"
+              placeholder="Write order here"
+            />
+          </div>
+          <button class="btn btn-alert" type="submit">
+            Place order
+          </button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-md-6 mt-4">
+    <div class="card border border-secondary">
+      <div class="card-header bg-light text-black">
+        Burgers
+      </div>
+      {{! Card to hold burger entries }}
+      <div class="card-body">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <p>
+              {{this.burger_name}}
+            </p>
+            <form action="/updateOne/{{this.id}}" method="POST">
+              <button class="btn btn-outline-success" type="submit">
+                eat
+                <i class="fas fa-utensils"></i>
+              </button>
+            </form>
+            <br />
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-4">
+    <div class="card border border-secondary devoured-card">
+      <div
+        class="card-header bg-secondary text-white"
+        id="devoured-card-header"
+      >
+        Devoured Burgers
+      </div>
+      <!-- Card for the devoured burgers -->
+      <div class="card-body">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class="devourBurger">
+              <p>
+                {{this.burger_name}}
+              </p>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="card footer">
+      <div class="card-body footer-body text-white">
+        <br />
+        <br />
+        <small></small>
+      </div>
+    </div>
+  </div>
 </div>
